@@ -66,7 +66,7 @@ services:
       kind: ['pipeline']
   tekton-catalog-repo:
     service_id: >
-      $env.pipeline_type === 'tekton' ? 'githubconsolidated' : ''
+      $env.pipeline_type === 'tekton' ? $env.source_provider ? $env.source_provider : 'hostedgit' : ''
     parameters:
       repo_url: "https://us-south.git.cloud.ibm.com/huayuenh/tekton-catalog"
       type: "link"
